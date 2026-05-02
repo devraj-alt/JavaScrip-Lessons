@@ -1,0 +1,16 @@
+Data Types:
+1. Primitive:
+    a. String-text data wrapped in quotes. "Devraj" 'hello' `template`,
+    b. Number-any numeric value, integers and decimals both. 42 3.14,
+    c. Boolean-only two possible values. true or false,
+    d. Null-you intentionally set something to nothing. let x = null,
+    e. Undefined-JS says this variable was never given a value. let x;,
+    f. Symbol-creates a completely unique value every time, used in advanced JS. skip for now,
+    g. BigInt-for numbers too large for regular Number type to handle. skip for now
+
+2. Non-Primitive (Referance Type):
+    a. Array-an ordered list of values stored in one variable. [1, 2, 3],
+    b. Object-a collection of key-value pairs describing something. { name: "Devraj", age: 22 },
+    c. Function-a reusable block of code that runs when called. () => {}
+
+    
