@@ -48,7 +48,7 @@ console.log(typeof (a - b)) // number
   console.log(Math.round(num)) // 8 - rounds to nearest
   console.log(Math.ceil(num)) // 8 - rounds up
   console.log(Math.floor(num)) // 7 - rounds down
-  console.log(num.toFixed(2)) // 7.86 - fixes how hown many numbers to show after decimal.
+  console.log(typeof +num.toFixed(2)) // 7.86 - fixes how hown many numbers to show after decimal.
   console.log(Number.isInteger(num)) // false - decimal number are not integers.
 }
 
@@ -117,7 +117,7 @@ console.log(typeof (a - b)) // number
   const temperature = 37.6
 
   const checkTemp = (temp) => {
-    if (temp < 36) {
+   /* if (temp < 36) {
       return "Hypothermia - too low"
     } else if (temp >= 36 && temp <= 37.5) {
       return "Normal"
@@ -125,7 +125,13 @@ console.log(typeof (a - b)) // number
       return "Fever"
     } else {
       return "High fever - see a doctor"
-    }
+    }*/
+
+    if (temp < 36) return "Hypothermia - too low"
+    if (temp <= 37.5) return "Normal"
+    if (temp <= 39) return "Fever"
+    
+    return "High fever - see a doctor"
   }
 
   console.log(checkTemp(temperature)); // Fever
@@ -177,17 +183,12 @@ console.log(typeof (a - b)) // number
 {
   //Q14
   const gradeChecker = (grade) => {
-    if (grade >= 90) {
-      return "A - Excellent"
-    } else if (grade >= 80 && grade <= 89) {
-      return "B - Good"
-    } else if (grade >= 70 && grade <= 79) {
-      return "C - Average"
-    } else if (grade >= 60 && grade <= 69) {
-      return "D - Below Average"
-    } else {
-      return "F - Fail"
-    }
+    if (grade >= 90) return "A - Excellent";
+    if (grade >= 80) return "B - Good";
+    if (grade >= 70) return "C - Average";
+    if (grade >= 60) return "D - Below Average";
+
+    return "F - Fail"
   }
 
   console.log(gradeChecker(95));
@@ -673,14 +674,15 @@ console.log(dayType("Holiday"));
     if (!str) return "Invalid Input"
 
     const sliceStr = str.split(" ")
-    const upperCase = sliceStr.map(word => word[0].toUpperCase() + word.slice(1))
+    const upperCase = sliceStr.map(word => word ? word[0].toUpperCase() + word.slice(1) : "" //handeling extra space in a sentence
+    )
 
     return upperCase.join(" ")
   }
 
   console.log(titleCase("hello world"));
   console.log(titleCase("my name is devraj"));
-  console.log(titleCase("javaScript is awesome"));
+  console.log(titleCase("javaScript is  awesome"));
   console.log(titleCase(""));
   console.log(titleCase(null));
 }
@@ -818,6 +820,23 @@ console.log(chunkArray([1,2,3,4,5], 2));
 console.log(chunkArray([1,2,3,4,5,6], 2));
 console.log(chunkArray([1,2,3], 1));
 console.log(chunkArray([], 2));
+
+{
+  const chunkArray = (arr, size) => {
+    if (!arr || arr.length === 0 || size <= 0) return "Invalid input"
+
+    const chunks = []
+    for (let i = 0; i < arr.length; i += size) {
+      const chunk = arr.slice(i, i + size)
+       chunks.push(chunk)
+    }
+    return chunks
+  }
+console.log(chunkArray([1,2,3,4,5], 2));
+console.log(chunkArray([1,2,3,4,5,6], 2));
+console.log(chunkArray([1,2,3], 1));
+console.log(chunkArray([], 2));
+}
 }
 
 {
@@ -912,14 +931,483 @@ console.log(chunkArray([], 2));
     let strSplit = str.split(" ")
     let longestWord = ""
 
-    for (i = 0; i < strSplit.length; i++) {
+    for (let i = 0; i < strSplit.length; i++) {
     if (strSplit[i].length > longestWord.length) {
       longestWord = strSplit[i]
     }
     }
-    return longestWord
+    return `Longest: ${longestWord}`
   }
   console.log(longestWord("I love JavaScript"));
   console.log(longestWord("Hello World"));
   console.log(longestWord(" "));
+}
+
+{
+  const fizzBuzz = (n) => {
+    if (n <= 0) return "Invalid input"
+
+    const result = []
+
+    for (let i = 1; i <= n; i++) {
+      if (i % 3 === 0 && i % 5 === 0) {
+        result.push("FizzBuzz")
+      } else if (i % 3 === 0) {
+        result.push("Fizz")
+      } else if (i % 5 === 0) {
+        result.push("Buzz")
+      } else {
+        result.push(i)
+      }
+    }
+    return result
+  }
+  console.log(fizzBuzz(3));
+  console.log(fizzBuzz(-1));
+  console.log(fizzBuzz(15));
+}
+
+{
+  const filterByLength = (arr, n) => {
+   if (!arr || arr.length === 0) {
+    return "Invalid input"
+   } else if (!n) return "Invalid input"
+
+   return arr.filter(word => word.length >= n).toSorted((a, b) => a.length - b.length)
+  }
+  console.log(filterByLength(["cat","elephant","dog","butterfly","ant"], 4));
+  console.log(filterByLength(["hi","hello","hey","howdy"], 3));
+  console.log(filterByLength([], 3));
+}
+
+{
+const multiplicationTable = (n) => {
+  if (typeof n !== "number" || n <= 0) {
+     return "Invalid input"
+  }
+
+  const product = []
+
+  for (let i = 1; i <= 10; i++ ) {
+    product.push(`${n} x ${i} = ${n * i}`)
+  }
+  return product
+}
+console.log(multiplicationTable(1));
+console.log(multiplicationTable(2));
+console.log(multiplicationTable(3));
+console.log(multiplicationTable(-1));
+}
+
+{
+  const countDown = (n) => {
+    if (!n || n <= 0) return "Invalid input"
+    
+    const count = []
+
+    for (let i = n; i >= 1; i--) {
+      count.push(i)
+    }
+    return count
+  }
+  console.log(countDown(5));
+}
+
+{
+  const findIndex = (arr, num) => {
+    if (!arr || arr.length === 0) return "Invalid input"
+
+   for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === num) {
+     return `Found at index: ${i}`
+    }
+   }
+   return `Not found`
+  }
+  console.log(findIndex([10, 20, 30, 40], 30));
+  console.log(findIndex([10,20,30], 99));
+  console.log(findIndex([], 10));
+}
+
+{
+  const removeFalsy = (arr) => {
+    if (!arr || arr.length === 0) return "Invalid input"
+
+    return arr.filter((value) => value)
+  }
+  console.log(removeFalsy([0, 1, "", 2, null, 3, undefined, false, 4]));
+  console.log(removeFalsy([]));
+}
+
+{
+  const capFirst = (arr) => {
+    if (!arr || arr.length === 0) return "Invalid input"
+
+    const name = []
+
+    for (let i = 0; i < arr.length; i++) {
+      const capitalized = arr[i][0].toUpperCase() + arr[i].slice(1)
+      name.push(capitalized)
+    }
+    return name
+  }
+  
+  console.log(capFirst(["devraj", "tabitha"]));
+}
+
+{
+  const numberToWords = (num) => {
+    if (num === undefined || num === null) return "Invalid input"
+    if (num > 9 || num < 0) return "Entered number should not be in negative and not more than 9."
+
+    let digitsInWords = ["Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"]
+
+    return digitsInWords[num]
+  }
+
+  console.log(numberToWords(1));
+  console.log(numberToWords(10));
+  console.log(numberToWords(0));
+  console.log(numberToWords());
+  console.log(numberToWords(9));
+}
+
+{
+  const sumDigits = (num) => {
+    if (num < 0) return "Invalid input"
+    const arr = num.toString().split("")
+    const sum = arr.reduce((acc, cur) => acc + +cur, 0)
+    return `Sum of digits: ${sum}`
+  }
+  console.log(sumDigits(123));
+  console.log(sumDigits(999));
+  console.log(sumDigits(0))
+  console.log(sumDigits(-5))
+}
+
+{
+  const countChar = (str, char) => {
+    if (!str) return "Invalid input"
+    const arr = str.split("")
+    const charCount = arr.filter((letter) => letter === char)
+    return `${char} appears ${charCount.length} times`
+  }
+  console.log(countChar("javascript", "a"));
+  console.log(countChar("hello", "z"));
+  console.log(countChar("", "a"));
+}
+
+{
+  const arrayToString = (arr, sptr) => {
+    if (!arr || arr.length === 0) return "Invalid input"
+    return arr.join(sptr) 
+  }
+  console.log(arrayToString([1,2,3,4,5], "-"));
+  console.log(arrayToString(["a","b","c"], ","));
+  console.log(arrayToString([], "-"));
+}
+
+{
+  const repeatString = (str, num) => {
+    if (num < 0) return "Invalid input"
+    if (!str || str.length === 0) return "Invalid input"
+    return str.repeat(num)
+  }
+  console.log(repeatString("ha", 3));
+  console.log(repeatString("JS", 2));
+  console.log(repeatString("hi", 0));
+  console.log(repeatString("", 3));
+  console.log(repeatString("hi", -1));
+}
+
+{
+  const secondLargest = (arr) => {
+    if (!arr || arr.length === 0) return "Invalid input"
+    const uniqueArr = [...new Set(arr)] // new Set(arr) build a Set of unique values. Set removes all the duplicate values.
+    //... unpacks those values out of the Set.
+    //[...] catch the unpacked value into a new array
+    //Set is built in javascript object that stores a collection of unique values only. No duplicates allowed.
+    if (uniqueArr.length < 2) return "Invalid input - need at least 2 unique numbers"
+    
+    const decendingOrder = uniqueArr.toSorted((a, b) => b - a)
+    return `Second largest: ${decendingOrder[1]}`
+  }
+  console.log(secondLargest([1,5,3,9,2]));
+  console.log(secondLargest([10,20,30]));
+  console.log(secondLargest([5,5,5]));
+  console.log(secondLargest([1]));
+  console.log(secondLargest([10, 10, 5]));
+  console.log(secondLargest([]));
+}
+
+{
+  const zipArrays = (arrOne, arrTwo) => {
+    if (!arrOne || !arrTwo || arrOne.length === 0 || arrTwo.length === 0) return "Invalid input"
+    
+    const result = []
+    const minLength = Math.min(arrOne.length, arrTwo.length)
+    for (let i = 0; i < minLength; i++) {
+      result.push([arrOne[i], arrTwo[i]])
+    }
+    return result
+  }
+  console.log(zipArrays([1,2,3], ["a","b","c"]));
+  console.log(zipArrays([1,2], ["a","b","c"]));
+  console.log(zipArrays([], [1,2,3]));
+  console.log(zipArrays([1,2,3], []));
+}
+
+{
+  const groupByLenngth = (arr) => {
+   const groups = {}
+   for (let i = 0; i < arr.length; i++) {
+   const word = arr[i]
+   const len = word.length
+   if (!groups[len]) {
+    groups[len] = []
+   }
+   groups[len].push(word)
+   }
+   return groups
+  }
+  console.log(groupByLenngth(["cat", "dog", "bird", "ant", "fish"]));
+}
+
+{
+  const findCommon = (arr1, arr2) => {
+    if (!arr1 || !arr2 || arr1.length === 0 || arr2.length === 0) return "Invalid input"
+    return arr1.filter(item => arr2.includes(item))
+  }
+  console.log(findCommon([1,2,3,4], [3,4,5,6]));
+  console.log(findCommon(["a","b","c"], ["b","c","d"]));
+  console.log(findCommon([1,2], [3,4]));
+  console.log(findCommon([], [1,2,3])); 
+
+  {
+    const findCommon = (arr1, arr2) => {
+       if (!arr1 || !arr2 || arr1.length === 0 || arr2.length === 0) return "Invalid input"
+       const set2 = new Set(arr2)
+       
+       return arr1.filter((item) => set2.has(item))
+    }
+    console.log(findCommon([1,2,3,4], [3,4,5,6]));
+    console.log(findCommon(["a","b","c"], ["b","c","d"]));
+    console.log(findCommon([1,2], [3,4]));
+    console.log(findCommon([], [1,2,3])); 
+  }
+}
+
+{
+  const isAnagram = (str1, str2) => {
+    if (!str1 || !str2) return "Invalid input"
+
+   const sortedStr1 = str1.toLowerCase().split("").toSorted().join("")
+   const sortedStr2 = str2.toLowerCase().split("").toSorted().join("")
+   
+   return sortedStr1 === sortedStr2 ? "Anagram" : "Not an anagram"
+  }
+  console.log(isAnagram("listen", "silent"));
+  console.log(isAnagram("hello", "world"));
+  console.log(isAnagram("Dormitory", "Dirtyroom"));
+  console.log(isAnagram("", "abc"));
+
+  {
+    const isAnagram = (str1, str2) => {
+       if (!str1 || !str2) return "Invalid input"
+
+       const cleanedSortedStr = str => str.toLowerCase().replace(/\s+/g, "").split("").toSorted().join("")
+
+       return cleanedSortedStr(str1) === cleanedSortedStr(str2) ? "Anagram" : "Not an anagram"
+    }
+
+    console.log(isAnagram("clint eastwood", "old west action"));
+  }
+}
+
+{
+  const flattenAndSum = (nestedArr) => {
+    if (!nestedArr || nestedArr.length === 0) return "Invalid input"
+
+    const flatArr = nestedArr.flat(Infinity)
+    return `Sum: ${flatArr.reduce((acc, cur) => acc + cur, 0)}`
+  }
+  console.log(flattenAndSum([1, [2, 3], [4, [5, 6]]]));
+  console.log(flattenAndSum([[1, 2], [3, 4], [5, 6]]));
+  console.log(flattenAndSum([1, 2, 3]));
+  console.log(flattenAndSum([]));
+
+  {
+    const flattenAndSumRecursive = (nestedArr) => {
+      if (!nestedArr || nestedArr.length === 0) return "Invalid input"
+
+      let sum = 0
+
+      const sumHelper = (arr) => {
+        for (let i = 0; i < arr.length; i++){
+          if (Array.isArray(arr[i])) {
+            sumHelper(arr[i]);
+          } else {
+            sum += arr[i];
+          }
+        }
+      }
+      sumHelper(nestedArr)
+      return `Sum: ${sum}`
+    }
+    console.log(flattenAndSumRecursive([1, [2, 3], [4, [5, 6]]]))
+  }
+}
+
+{
+  const containesDuplicate = (arr) => new Set(arr).size !== arr.length
+  console.log(containesDuplicate([1, 2, 3, 1]));
+  console.log(containesDuplicate([1, 2, 3]));
+}
+
+{
+  const isPalindrome = (str) => {
+    const cleanstr = str.toLowerCase().replace(/[^a-z0-9]/g, "")
+    return cleanstr === cleanstr.split("").reverse().join("") ? `${str} - is palindrome` : `${str} - is not a palindrome`;
+    
+    
+  }
+  console.log(isPalindrome("racecar"));
+  console.log(isPalindrome("hello"));
+  console.log(isPalindrome("A man, a plan, a canal: Panama"));
+}
+
+{
+  const twoSum = (nums, target) => {
+    if (!nums || nums.length === 0) return "Invalid input"
+
+    let notePad = {}
+
+    for (let i = 0; i < nums.length; i++) {
+      const neededNum = target - nums[i]
+      if (notePad[neededNum] !== undefined) {
+        return [notePad[neededNum], i]
+      }
+      notePad[nums[i]] = i
+    }
+    return "No match found"  
+  }
+  console.log(twoSum([2, 11, 7, 15], 9));
+  console.log(twoSum([3, 2, 4], 6));
+  console.log(twoSum([1, 2, 3], 9));
+  console.log(twoSum([], 9));
+}
+
+{
+  const makeFullName = (arr) => {
+    if (!arr || arr.length === 0) return "Invalid input"
+   const fullName = arr.map((name) => {
+    const {firstName, lastName} = name
+    return `${firstName} ${lastName}`
+   })
+   return fullName
+  }
+
+  console.log(makeFullName([
+    { firstName: "Devraj", lastName: "Roy" },
+    { firstName: "Tabitha", lastName: "Ching" }
+  ]));
+  console.log(makeFullName([]));
+
+  {
+    const makeFullName = (arr) => {
+      if (!arr || arr.length === 0) return "Invalid input"
+      return arr.map(name => `${name.firstName} ${name.lastName}`)
+    }
+
+     console.log(makeFullName([
+    { firstName: "Devraj", lastName: "Roy" },
+    { firstName: "Tabitha", lastName: "Ching" }
+  ]));
+  console.log(makeFullName([]));
+  } 
+}
+
+{
+  const filterByAge = (arr, num) => {
+    if (!arr || num === undefined || arr.length === 0) return "Invalid input"
+
+     const removeUnderAged = arr.filter(person => person.age >= num) 
+     return removeUnderAged.toSorted((a, b) => a.age - b.age)
+  }
+  console.log(filterByAge([
+    { name: "Devraj", age: 34 },
+    { name: "Tabitha", age: 28 },
+    { name: "Rahul", age: 17 },
+    { name: "Priya", age: 35 }
+  ], 18));
+  console.log(filterByAge([], 18)); 
+}
+
+{
+  const wordFrequency = (str) => {
+    if (!str) return "Invalid input"
+    const frequencyOfWords = {}
+
+    const splitStr = str.split(" ")
+    for (let i = 0; i < splitStr.length; i++) {
+     if (!frequencyOfWords[splitStr[i]]) {
+      frequencyOfWords[splitStr[i]] = 1
+     } else {
+      frequencyOfWords[splitStr[i]]++
+     }
+   }
+   return frequencyOfWords
+  }
+  console.log(wordFrequency("the cat sat on the mat the cat"));
+  console.log(wordFrequency("hello world hello"));
+  console.log(wordFrequency(""));
+  
+  
+
+  {
+    const wordFrequency = (str) => {
+      if (!str) return "Invalid input"
+      const frequencyOfWords = {}
+
+      const splitStr = str.split(" ")
+      for (let word of splitStr) {
+        if (!frequencyOfWords[word]) {
+          frequencyOfWords[word] = 1
+        } else {
+          frequencyOfWords[word]++
+        }
+      }
+      return frequencyOfWords
+    }
+    console.log(wordFrequency("the cat sat on the mat the cat"));
+    console.log(wordFrequency("hello world hello"));
+    console.log(wordFrequency(""));
+  }
+
+  {
+    const wordFrequency = (str) => {
+      if (!str) return "Invalid input"
+      const frequencyOfWords = {}
+
+      const splitStr = str.split(" ")
+      for (let word of splitStr) {
+        frequencyOfWords[word] = (frequencyOfWords[word] || 0) + 1
+      }
+      return frequencyOfWords
+    }
+    console.log(wordFrequency("the cat sat on the mat the cat"));
+    console.log(wordFrequency("hello world hello"));
+    console.log(wordFrequency(""));
+  }
+}
+
+{
+  const doubleNumbers = (arr) => {
+    const result = []
+    for (let num of arr) {
+      result.push(num * 2)
+    }
+    return result
+  }
+  console.log(doubleNumbers([2, 4, 6, 8]));
 }
