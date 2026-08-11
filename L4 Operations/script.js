@@ -47,7 +47,7 @@ let f = "3"
 let ef = e !== f // Compares both type and values (no type conversion)
 console.log(ef);
 
-// Other Comparision
+// Other Comparison
 5 > 3      // true  → greater than
 let g = 5
 let h = 3
@@ -73,7 +73,7 @@ let mn = m <= n
 console.log(mn);
 
 
-/*Challange Problem:
+/*Challenge Problem:
 Ram’s age = 15
 Sam’s age = 19
 

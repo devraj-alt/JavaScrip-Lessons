@@ -1,6 +1,6 @@
 //Date and Time:
 
-//Declearing date
+//Declaring date
 let myDate = new Date()  //This is a date object
 console.log(myDate); //Fri May 01 2026 13:57:54 GMT+0530 (India Standard Time)
 console.log(typeof myDate); //Type is an object.
@@ -27,7 +27,7 @@ console.log(myDate.getMinutes());   // 02, it gets minute of the hour.
 console.log(myDate.getSeconds());   // 19, it gets second of the minute.
 console.log(myDate.getTime());      // milliseconds since Jan 1 1970
 
-//Declearing specific date
+//Declaring specific date
 let myCreatedDate = new Date(2026, 4, 1)
 console.log(myCreatedDate); //Fri May 01 2026 00:00:00 GMT+0530 (India Standard Time)
 //month 4 = May (months start from 0, January = 0)
@@ -44,7 +44,7 @@ console.log(fromString);
 let fromStringTime = new Date("2026-05-01T03:59:00")
 console.log(fromStringTime);
 
-let myTimeStamp = Date.now() //This gives a number i.e. miliseconds running from Jan 1 1970.
+let myTimeStamp = Date.now() //This gives a number i.e. milliseconds running from Jan 1 1970.
 let stamp = new Date(myTimeStamp) //Here myTimeStamp which is a number is getting converted to date object.
 let hrs = stamp.getHours();   // extracts hours from the date object
 let min = stamp.getMinutes(); // extracts minutes from the date object

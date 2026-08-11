@@ -8,7 +8,7 @@ Data Types:
     f. Symbol-creates a completely unique value every time, used in advanced JS. skip for now,
     g. BigInt-for numbers too large for regular Number type to handle. skip for now
 
-2. Non-Primitive (Referance Type):
+2. Non-Primitive (Reference Type):
     a. Array-an ordered list of values stored in one variable. [1, 2, 3],
     b. Object-a collection of key-value pairs describing something. { name: "Devraj", age: 22 },
     c. Function-a reusable block of code that runs when called. () => {}

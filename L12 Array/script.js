@@ -2,7 +2,7 @@
 
 {
 const arr = [1, 2, 3, 4, 5]
-const hero = ["ironman", "captain america"]
+const hero = ["iron man", "captain america"]
 const arr2 = new Array(1, 2, 3, 4)
 console.log(arr[0]);
 }
@@ -54,7 +54,7 @@ console.log(spliceMethod.splice(1, 3));
 }
 
 {
-const marvelHeros = ["thor", "irinman", "spiderman"]
+const marvelHeros = ["thor", "iron man", "spider man"]
 const dcHeros = ["superman", "flash", "batman"]
 
 marvelHeros.push(dcHeros) //this will create nested array
@@ -62,7 +62,7 @@ console.log(marvelHeros);
 }
 
 {
-const marvelHeros = ["thor", "irinman", "spiderman"]
+const marvelHeros = ["thor", "iron man", "spider man"]
 const dcHeros = ["superman", "flash", "batman"]
 const allHeros = marvelHeros.concat(dcHeros) //concat merge two or more arrays.
 console.log(allHeros);
@@ -70,7 +70,7 @@ console.log(allHeros);
 
 {
 //spread operator:
-const marvelHeros = ["thor", "irinman", "spiderman"]
+const marvelHeros = ["thor", "iron man", "spider man"]
 const dcHeros = ["superman", "flash", "batman"]
 const allHeros = [...marvelHeros, ...dcHeros] //
 console.log(allHeros);

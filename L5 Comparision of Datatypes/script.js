@@ -8,13 +8,13 @@
 0 == false // true - false becomes 0
 "" == false // true - both become 0
 null == undefined // true - specific rule
-/* null and undefined both mean nothing, just in diffrent situations.
+/* null and undefined both mean nothing, just in different situations.
 null: we intentionally set it to nothing on "purpose".
 undefined : JS says never given a value. */
 
 // 2. Strict equality : It compares both the type and value. No conversion.
 
-5 === "5" // false - number vs string, diffrent types
+5 === "5" // false - number vs string, different types
 5 === 5 // true - same value and type
 0 === false // false - number vs boolean
 
@@ -34,7 +34,7 @@ greet(user)
 
 //3. Greater/less than
 
-const greterOrLess = (paraOne, paraTwo) => {
+const greaterOrLess = (paraOne, paraTwo) => {
    if (paraOne > paraTwo) {
     console.log(`${paraOne} is greater than ${paraTwo}`);
    } else if (paraTwo > paraOne) {
@@ -44,9 +44,9 @@ const greterOrLess = (paraOne, paraTwo) => {
    }
 }
 
-greterOrLess(10, 5)
-greterOrLess(5, 7)
-greterOrLess(6, 6)
+greaterOrLess(10, 5)
+greaterOrLess(5, 7)
+greaterOrLess(6, 6)
 
 //4. Greater than or equal (>=): means greater than or equal to — true if left is bigger or the same.
 

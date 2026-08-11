@@ -1,7 +1,7 @@
 // Objects Part 1:
 
 {
-    //Declearing Objects: Objects can be declared in two ways 1. Literal 2. Constructor.
+    //Declaring Objects: Objects can be declared in two ways 1. Literal 2. Constructor.
 
     //1.LITERAL: Direct syntax ({}, []) that instantly creates an object in memory without calling a function.
     const userLiteral = {
@@ -38,7 +38,7 @@
 
         console.log(child.name = "Kim Jong Un"); // a brand new own property is created inside child object, now its shadows the parent property
 
-        console.log(child); // now when loged child object will give an output { name: "Kim Jong Un" }, because child object has its own name property.
+        console.log(child); // now when logged child object will give an output { name: "Kim Jong Un" }, because child object has its own name property.
     }
 }
 

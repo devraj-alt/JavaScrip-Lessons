@@ -7,7 +7,7 @@ changeLesson = 'JavaScript Memory'
 console.log(lessonName);
 console.log(changeLesson);
 
-//Heap Memory: Non-primitive data types are stored in heap memory. In heap memory we get a reference of the original data. Here the original data get updated because both the variables are refering to the same data.
+//Heap Memory: Non-primitive data types are stored in heap memory. In heap memory we get a reference of the original data. Here the original data get updated because both the variables are referring to the same data.
 
 let userOne = {
     email: 'jhon@goole.com',

@@ -46,8 +46,8 @@ false && false  // false
 
 
 
-const canDrive = (driverAge, hasLicence) => {
-    if (driverAge >= 18 && hasLicence) {
+const canDrive = (driverAge, hasLicense) => {
+    if (driverAge >= 18 && hasLicense) {
         console.log("Can drive");
     } else {
         console.log("Cannot drive");
