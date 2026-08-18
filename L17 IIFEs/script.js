@@ -13,6 +13,10 @@ const iife = (() => {
     console.log(`Immediately Invoked Function Expression`);
 })()
 
+const paraIife = ((name) => {
+    console.log(name);
+})("Devraj")
+
 //# A function call cannot be followed by the const keyword. To prevent a syntax crash, JavaScript automatically inserts a semicolon.
 
 {
