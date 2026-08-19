@@ -60,11 +60,11 @@ _There is two Phases of Execution_
             |---> result1 => 15
             |---> result2 ----(new variable environment and executional thread)
             |            |
-            |            |---> Memory Phase
-            |            |
-            |            |---> Execution Phase
+            |            |---> Memory Phase     }----|
+            |            |                           |--- (same as the addNum)
+            |            |---> Execution Phase  }----|
 
-_Call Stack:_ The Call Stack is the machanism JavaScript uses to track function execution order. It works on LIFO (Last In, First Out) structure. The last function is pushed onto the stack os the first one executed and popped off.
+_Call Stack:_ The Call Stack is the mechanism JavaScript uses to track function execution order. It works on LIFO (Last In, First Out) structure. The last function is pushed onto the stack os the first one executed and popped off.
 
 _Core Mechanics: Push & Pop_
     PUSH (Add): When a function is invoked, its Execution Context is pushed onto the top of the stack.
