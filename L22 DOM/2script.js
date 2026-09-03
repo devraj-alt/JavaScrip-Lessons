@@ -59,3 +59,60 @@
 }
 
 //document.querySelector(): returns the first Element inside the document that matches a specified CSS selector. If no matching element is found, it returns null.
+
+{
+    const mainHeading = document.querySelector('#chai-aur-code') // since original "id" value has been updated with new "id" value
+    console.log(mainHeading);
+
+    const mainClass = document.querySelector(".test")
+    console.log(mainClass);
+
+    const myul = document.querySelector('ul')
+    console.log(myul);
+
+    const myli = myul.querySelector('li')
+    console.log(myli);
+
+     turnYellow = myli.style.color = "yellow"
+     turnYellow = myli.style.padding = "10px"
+     turnYellow = myli.innerText = "five"
+}
+
+//document.querySelectorAll(): returns a static NodeList containing all DOM elements that match a specified CSS selector. If no elements match, it returns an empty NodeList with length: 0 (never null).
+
+{
+    {
+        const allSelector = document.querySelectorAll('li')
+        console.log(allSelector[1].style.color = 'green');
+
+        {
+            allSelector.forEach(l => {
+                l.style.fontSize = '25px' 
+            });
+        }
+        
+    }
+
+    {
+        const myH1 = document.querySelectorAll('h1')
+        console.log(myH1[0].style.color = 'blue');
+        
+    }
+}
+
+//document.getElementsByClassName(): method returns a live HTMLCollection containing all child elements that match the specified class name.
+
+{
+    const getByClassName = document.getElementsByClassName('list-item')
+
+    console.log(getByClassName);
+
+    const htmlCollectionToArr = Array.from(getByClassName)
+
+    console.log(htmlCollectionToArr);
+
+    htmlCollectionToArr.forEach(li => {
+        console.log(li.style.color = '#40b3d0');
+    });
+    
+}
