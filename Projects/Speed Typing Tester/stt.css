@@ -1,0 +1,197 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0b0f19;
+    color: #f8fafc;
+    padding: 20px;
+}
+
+/* Main Container Grid Layout */
+.wrapper {
+    width: 100%;
+    max-width: 900px;
+    background-color: #121929;
+    border: 1px solid #1e293b;
+    padding: 36px;
+    border-radius: 18px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+/* Full Width Elements */
+.wrapper > h1, 
+.wrapper > p, 
+.bg-slate, 
+.iput-slate {
+    grid-column: 1 / -1;
+}
+
+.wrapper > h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #38bdf8;
+    text-align: center;
+}
+
+.wrapper > p {
+    color: #94a3b8;
+    text-align: center;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+}
+
+/* Metric Cards Base Styling */
+.wpm-card, .acc-card, .el-time-card {
+    background-color: #162032;
+    padding: 18px 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.wpm-card { border-left: 4px solid #06b6d4; }
+.acc-card { border-left: 4px solid #10b981; }
+.el-time-card { border-left: 4px solid #f59e0b; }
+
+.wpm-card p, .acc-card p, .el-time-card p {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #94a3b8;
+    letter-spacing: 0.5px;
+}
+
+.wpm-card span, .acc-card span, .el-time-card span {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-top: 4px;
+}
+
+/* Card Right Side Icons */
+.wpm-card::after, .acc-card::after, .el-time-card::after {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.wpm-card::after {
+    content: '⏲️';
+    background-color: #0e2a3a;
+}
+
+.acc-card::after {
+    content: '🎯';
+    background-color: #0e3028;
+}
+
+.el-time-card::after {
+    content: '⏱️';
+    background-color: #33280e;
+}
+
+/* Target Text Container */
+.bg-slate {
+    background-color: #080d1a;
+    border-radius: 12px;
+    padding: 32px 24px;
+    margin: 8px 0;
+    text-align: center;
+    min-height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.display-text {
+    font-family: 'Courier New', Consolas, monospace;
+    font-size: 1.35rem;
+    letter-spacing: 1px;
+    color: #94a3b8;
+    word-break: break-word;
+}
+
+/* Character Live Feedback Classes */
+.correct {
+    color: #4ade80;
+    background-color: transparent;
+    border-radius: 2px;
+}
+
+.incorrect {
+    color: #f87171;
+    background-color: transparent;
+    border-radius: 2px;
+}
+
+/* Input Box Area with Embedded Reset Button */
+.iput-slate {
+    position: relative;
+    width: 100%;
+}
+
+textarea {
+    width: 100%;
+    height: 130px;
+    background-color: #080d1a;
+    color: #f8fafc;
+    border: 2px solid #06b6d4;
+    border-radius: 12px;
+    padding: 18px;
+    font-family: 'Courier New', Consolas, monospace;
+    font-size: 1.05rem;
+    resize: none;
+    outline: none;
+    box-shadow: 0 0 12px rgba(6, 182, 212, 0.15);
+}
+
+textarea::placeholder {
+    color: #475569;
+}
+
+button {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: #e2e8f0;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+button::before {
+    content: '↺';
+    font-size: 1rem;
+}
+
+button:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+}

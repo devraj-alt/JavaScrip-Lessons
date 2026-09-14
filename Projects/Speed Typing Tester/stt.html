@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speed Typing Tester</title>
+    <link rel="stylesheet" href="stt.css">
+</head>
+<body>
+    <div class="wrapper" id="container">
+        <h1>Live Metrics Dashboard</h1>
+        <p>Test your typing speed and monitor your performance live.</p>
+        <div class="wpm-card" id="wpm">
+            <p>Words Per Minute: <span id="wpm-val">00</span></p>
+        </div>
+        <div class="acc-card" id="acc">
+            <p>Accuracy: <span id="acy-val">100%</span></p>
+        </div>
+        <div class="el-time-card" id="elTime">
+            <p>Elapsed Time: <span id="time-val">0s</span></p>
+        </div>
+        <div class="bg-slate" id="slate">
+            <p class="display-text" id="target-text"></p>
+        </div>
+        <div class="iput-slate">
+            <textarea placeholder="Start typing here to initialize live metrics dashboard" id="input-box"></textarea>
+            <button id="reset-btn">Reset</button>
+        </div>
+    </div>
+    <script src="stt.js"></script>
+</body>
+</html>
