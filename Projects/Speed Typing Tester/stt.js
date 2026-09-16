@@ -8,18 +8,20 @@ const elapsedTime = document.querySelector('#time-val')
 const sentences = ["var defines a function scoped or globally scoped variable that can be optionally initialized, reassigned, and redeclared anywhere within its scope.", "let defines a block scoped local variable that can be reassigned to a new value but cannot be redeclared within the same block.", "const defines a block scoped, read only constant that must be initialized immediately and cannot be reassigned or redeclared."]
 
 let timeInterval = null
-let starTime = null
+let startTime = null
 let isTimerRunning = false
 
 const initGame = () => {
     userInput.disabled = false
     clearInterval(timeInterval)
-    starTime = null
+    startTime = null
     isTimerRunning = false
 
     elapsedTime.innerText = '0s'
     targetText.innerHTML = ''
     userInput.value = ''
+    wordsPerMin.innerText = '0'
+    accuracy.innerText = '100%'
 
     const randomSentence = Math.floor(Math.random() * sentences.length)
     const chosenSentence = sentences[randomSentence]
@@ -54,10 +56,20 @@ userInput.addEventListener('input', () => {
 
     if (!isTimerRunning && userInput.value.length > 0) {
         isTimerRunning = true
-        starTime = Date.now()
+        startTime = Date.now()
         timeInterval = setInterval(() => {
-            const seconds = Math.floor((Date.now() - starTime) / 1000)
+            const seconds = Math.floor((Date.now() - startTime) / 1000)
             elapsedTime.innerHTML = `${seconds}s`
+
+            const elapsedSeconds = (Date.now() - startTime) / 1000
+            const elapsedMinutes = elapsedSeconds / 60
+            const correctCount = targetText.querySelectorAll('span.correct').length
+
+            const wpmVal = elapsedMinutes > 0 
+                ? Math.round((correctCount / 5) / elapsedMinutes) 
+                : 0
+            
+            wordsPerMin.innerText = wpmVal
         })
     }
 
@@ -66,4 +78,12 @@ userInput.addEventListener('input', () => {
         isTimerRunning = false
         userInput.disabled = true
     }
+
+    const totalTyped = typedCharacters.length
+    const correctCount = targetText.querySelectorAll('span.correct').length
+    const accuracyVal = totalTyped > 0
+    ? Math.round((correctCount / totalTyped) * 100)
+    : 100
+
+    accuracy.innerText = `${accuracyVal}%`
 })
