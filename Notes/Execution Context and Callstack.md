@@ -46,7 +46,7 @@ _There is two Phases of Execution_
             |            |--> Memory Phase
             |            |    |
             |            |    |-> num1 => undefined (Parameter)
-            |            |    |-> num2 => undefined
+            |            |    |-> num2 => undefined (Parameter)
             |            |    |-> total => undefined (Local Variable)
             |            |
             |            |--> Execution Phase
