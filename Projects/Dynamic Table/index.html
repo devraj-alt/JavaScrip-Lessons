@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Table</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <h1 class="main-title">Dynamic Table</h1>
+        <div class="form-container">
+            <div class="input-group">
+                <label for="name" class="input-label">Name</label>
+                <input id="name" class="input-field" type="text" placeholder="Enter name">
+            </div>
+
+            <div class="input-group">
+                <label for="address" class="input-label">City</label>
+                <input id="city" class="input-field" type="text" placeholder="Enter city">
+            </div>
+
+            <div class="input-group">
+                <label for="job" class="input-label">Job</label>
+                <input id="job" class="input-field" type="text" placeholder="Enter job">
+            </div>
+
+            <button id="submitBtn" class="submit-btn">Submit</button>
+        </div>
+
+        <div class="table-wrapper">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>City</th>
+                        <th>Job</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
