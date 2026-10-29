@@ -75,5 +75,3 @@ submitBtn.addEventListener('click', (e) => {
         inputCity.value = ""
         inputJob.value = ""
 })
-
-
